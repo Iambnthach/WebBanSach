@@ -13,5 +13,15 @@ namespace Project_Nhom10.Controllers
         {
             return View();
         }
+
+        public ActionResult BestSelling()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
     }
 }

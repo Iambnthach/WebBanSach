@@ -23,5 +23,10 @@ namespace Project_Nhom10.Controllers
         {
             return View();
         }
+
+        public ActionResult Productdetail()
+        {
+            return View();
+        }
     }
 }

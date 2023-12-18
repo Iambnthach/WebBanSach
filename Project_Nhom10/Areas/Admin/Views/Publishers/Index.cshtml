@@ -1,0 +1,67 @@
+﻿@model List<Project_Nhom10.Models.NHAXUATBAN>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <form action="~/Admin/publishers/create" method="post">
+        <div class="row my-3 py-3">
+            <label class="form-label">Thêm nhà xuất bản</label>
+            <div class="col-12 col-md-6">
+                <input type="text" class="form-control my-4" placeholder="Nhập nhà xuất bản" name="TENNXB">
+                <div class="invalid-feedback" name="TENNXB">
+                    Phần này không được để trống
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <button class="btn btn-success my-4" type="submit">Thêm</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="container">
+    <table class="table table-bordered proTable">
+        <thead>
+            <tr>
+                <th scope="col">Mã nhà xuất bản</th>
+                <th scope="col">Tên nhà xuất bản</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(row => item.MANXB)</td>
+                    <td>@Html.DisplayFor(row => item.TENNXB)</td>
+                    <td>
+                        <form action="~/Admin/Publishers/delete/@item.MANXB" method="post">
+                            <button type="submit" class="btn"><i class="bi bi-trash" style="color: red;"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @*<div class="row">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link text-danger" href="/admin/products/index?search=@ViewBag.search&page=1" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                    {
+                        <li class="page-item">
+                            <a class="page-link text-danger" href="/admin/products/index?search=@ViewBag.search&page=@(i+1)">@(i+1)</a>
+                        </li>
+                    }
+                    <li class="page-item">
+                        <a class="page-link text-danger" href="/admin/products/index?search=@ViewBag.search&page=@ViewBag.NoOfPages" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>*@
+</div>

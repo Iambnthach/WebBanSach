@@ -1,0 +1,68 @@
+﻿@model Project_Nhom10.Models.SACH
+@{
+    ViewBag.Title = "create";
+}
+<div class="container">
+    @using (Html.BeginForm("create", "products", new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row my-3 py-3">
+            <div class="col-12 col-md-6">
+                @Html.LabelFor(row => row.TENSACH, "Tên sách")
+                @Html.TextBoxFor(row => row.TENSACH, new { @class = "form-control", placeholder = "Nhập tên sách" })
+                @Html.ValidationMessageFor(row => row.TENSACH)
+            </div>
+            <div class="col-12 col-md-6">
+                @Html.LabelFor(row => row.SOLUONGTON, "Số lượng")
+                @Html.TextBoxFor(row => row.SOLUONGTON, new { @class = "form-control", placeholder = "Số lượng", type = "number" })
+                @Html.ValidationMessageFor(row => row.SOLUONGTON)
+            </div>
+        </div>
+        <div class="row my-3 py-3">
+            <div class="col-12 col-md-6">
+                @Html.LabelFor(row => row.GIA, "Giá")
+                @Html.TextBoxFor(row => row.GIA, new { @class = "form-control", placeholder = "Nhập giá", type = "number" })
+                @Html.ValidationMessageFor(row => row.GIA)
+            </div>
+            <div class="col-12 col-md-6">
+                @Html.LabelFor(row => row.GIAMGIA, "Giảm giá")
+                @Html.TextBoxFor(row => row.GIAMGIA, new { @class = "form-control", placeholder = "Nhập giảm giá", type = "number" })
+                @Html.ValidationMessageFor(row => row.GIAMGIA)
+            </div>
+        </div>
+        <div class="row my-3 py-3">
+            <div class="col-12 col-md-6">
+                @Html.LabelFor(row => row.MATL, "Thể loại")
+                @Html.DropDownListFor(row => row.MATL, new SelectList(ViewBag.theloai, "MATL", "TENTL"), "Chọn thể loại", new { @class = "form-control" })
+                @Html.ValidationMessageFor(row => row.MATL)
+            </div>
+            <div class="col-12 col-md-6">
+                @Html.LabelFor(row => row.MATG, "Tác giả")
+                @Html.DropDownListFor(row => row.MATG, new SelectList(ViewBag.tacgia, "MATG", "HOTEN"), "Chọn tác giả", new { @class = "form-control" })
+                @Html.ValidationMessageFor(row => row.MATG)
+            </div>
+        </div>
+        <div class="row my-3 py-3">
+            <div class="col-12 col-md-6">
+                @Html.LabelFor(row => row.MANXB, "Nhà xuất bản")
+                @Html.DropDownListFor(row => row.MANXB, new SelectList(ViewBag.nhaxuatban, "MANXB", "TENNXB"), "Chọn nhà xuất bản", new { @class = "form-control" })
+                @Html.ValidationMessageFor(row => row.MANXB)
+            </div>
+            <div class="col-12 col-md-6">
+                @Html.LabelFor(row => row.HINHANH, "Hình ảnh")
+                @Html.TextBoxFor(row => row.HINHANH, new { @class = "form-control", placeholder = "Đường dẫn hình ảnh" })
+                @Html.ValidationMessageFor(row => row.HINHANH)
+            </div>
+        </div>
+        <div class="row my-3 py-3">
+            <div class="col-12 col-md-6">
+                @Html.LabelFor(row => row.MOTA, "Mô tả")
+                @Html.TextBoxFor(row => row.MOTA, new { @class = "form-control", placeholder = "Nhập mô tả sản phẩm" })
+                @Html.ValidationMessageFor(row => row.MOTA)
+            </div>
+            <div class="col-12 col-md-6">
+                <button class="btn btn-success my-4" type="submit">Save</button>
+                <a class="btn btn-danger my-4" href="/admin/products/index">Cancel</a>
+            </div>
+        </div>
+    }
+</div>

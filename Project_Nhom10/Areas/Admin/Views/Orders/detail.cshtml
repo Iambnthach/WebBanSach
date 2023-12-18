@@ -1,0 +1,33 @@
+﻿@model List<Project_Nhom10.Models.CHITIETDONHANG>
+@{
+    ViewBag.Title = "detail";
+}
+<div class="container">
+    <table class="table table-bordered proTable">
+        <thead>
+            <tr>
+                <th scope="col">Mã đơn hàng</th>
+                <th scope="col">Sách</th>
+                <th scope="col">Số lượng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(row => item.MADONHANG)</td>
+                    <td>@Html.DisplayFor(row => item.SACH.TENSACH)</td>
+                    <td>@Html.DisplayFor(row => item.SOLUONG)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <form action="~/Admin/orders/confirm/@ViewBag.id" method="post">
+        <button type="submit" class="btn"><i class="bi bi-box-seam"> Duyệt đơn</i></button>
+    </form>
+    <form action="~/Admin/orders/delete/@ViewBag.id" method="post">
+        <button type="submit" class="btn"><i class="bi bi-trash" style="color: red;"> Xoá đơn</i></button>
+    </form>
+</div>

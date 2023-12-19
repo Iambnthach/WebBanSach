@@ -34,6 +34,15 @@ namespace Project_Nhom10.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult delete(int id)
         {
+            List<SACH> lst = db.SACHes.Where(t => t.MATL == id).ToList();
+            if(lst.Count != 0)
+            {
+                foreach(SACH i in lst)
+                {
+                    i.MATL = 2002;
+                    db.SaveChanges();
+                }
+            }      
             THELOAI tl = db.THELOAIs.Where(t => t.MATL == id).FirstOrDefault();
             db.THELOAIs.Remove(tl);
             db.SaveChanges();

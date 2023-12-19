@@ -34,6 +34,15 @@ namespace Project_Nhom10.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult delete(int id)
         {
+            List<SACH> lst = db.SACHes.Where(t => t.MANXB == id).ToList();
+            if(lst.Count != 0)
+            {
+                foreach(var i in lst)
+                {
+                    i.MANXB = 2003;
+                    db.SaveChanges();
+                }    
+            }
             NHAXUATBAN nxb = db.NHAXUATBANs.Where(t => t.MANXB == id).FirstOrDefault();
             db.NHAXUATBANs.Remove(nxb);
             db.SaveChanges();

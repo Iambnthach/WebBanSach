@@ -34,6 +34,15 @@ namespace Project_Nhom10.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult delete(int id)
         {
+            List<SACH> lst = db.SACHes.Where(t => t.MATG ==  id).ToList();
+            if(lst.Count != 0)
+            {
+                foreach(SACH i in lst)
+                {
+                    i.MATG = 2003;
+                    db.SaveChanges();
+                }    
+            }    
             TACGIA tg = db.TACGIAs.Where(t => t.MATG == id).FirstOrDefault();
             db.TACGIAs.Remove(tg);
             db.SaveChanges();
